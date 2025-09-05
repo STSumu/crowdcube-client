@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     const links=<>
-       <li><NavLink>Home</NavLink></li>
-       <li><NavLink>All Campaign</NavLink></li>
-       <li><NavLink>Add new Campaign</NavLink></li>
-       <li><NavLink>My Donations</NavLink></li>
+       <li><NavLink to='/'>Home</NavLink></li>
+       <li><NavLink to='/allCampaign'>All Campaign</NavLink></li>
+       <li><NavLink to='/newCampaign'>Add new Campaign</NavLink></li>
+       <li><NavLink to='/mydonation'>My Donations</NavLink></li>
     </>
+    const [bg,setbg]=useState('');
+      useEffect(() => {
+    const handleScroll = () => {
+      const scrollStatus = window.scrollY > 300;
+
+      if (!scrollStatus) {
+         setbg("bg-transparent");
+      } else {
+         setbg("bg-forest-matte");
+      }
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [location.pathname]);
     return (
-        <div className="z-50 navbar shadow-sm bg-transparent text-white fixed top-0 w-full">
+        <div className={`z-50 navbar shadow-sm ${bg} text-white fixed top-0 w-full`}>
   <div className="navbar-start"> 
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -24,12 +41,12 @@ const Navbar = () => {
     <a className="btn btn-ghost text-xl">Crowdcube</a>
   </div>
   <div className="navbar-center hidden lg:flex">
-    <ul className="menu menu-horizontal px-1">
+    <ul className="menu menu-horizontal px-1 font-semibold">
       {links}
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Login</a>
+    <button className={`btn btn-md md:btn-lg bg-cream-sage text-forest-matte rounded-4xl md:px-8 shadow-none border-0`}>Login</button>
   </div>
 </div>
     );

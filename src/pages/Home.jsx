@@ -6,6 +6,9 @@ const Home = () => {
     return (
        <div className='space-y-20'>
         <Banner></Banner>
+        <div className='min-h-screen'>
+
+        </div>
        </div>
     );
 };

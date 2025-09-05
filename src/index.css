@@ -1,2 +1,26 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.font-body {
+  font-family: "Inter", sans-serif;
+  
+}
+
+.font-display {
+  font-family: "DM Serif Display", serif;
+}
+
+@theme {
+  --color-mint-matte: #B8D8BA;
+  --color-eucalyptus: #7FB069;
+  --color-forest-matte: #2F4F4F;
+  --color-charcoal-green: #2C3E2D;
+  --color-cream-sage: #F4F6F0;
+}
+.menu .active{
+    background-color: #F4F6F0;
+    color:#2F4F4F;
+}
