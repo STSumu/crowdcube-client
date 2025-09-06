@@ -94,7 +94,7 @@ useEffect(() => {
     return (
             <div>
               <div
-  className="hero min-h-screen absolute top-0 z-0"
+  className="hero min-h-screen relative top-0 z-0"
   style={{
     backgroundImage:
       `url(${categories[selectedIdx].image})`,
