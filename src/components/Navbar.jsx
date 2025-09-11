@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     const links=<>
@@ -8,12 +8,13 @@ const Navbar = () => {
        <li><NavLink to='/newCampaign'>Add new Campaign</NavLink></li>
        <li><NavLink to='/mydonation'>My Donations</NavLink></li>
     </>
+    const paths=["/"]
     const [bg,setbg]=useState('');
       useEffect(() => {
     const handleScroll = () => {
       const scrollStatus = window.scrollY > 300;
 
-      if (!scrollStatus) {
+      if (!scrollStatus & paths.includes(location.pathname)) {
          setbg("bg-transparent");
       } else {
          setbg("bg-forest-matte");
@@ -26,7 +27,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname]);
     return (
-        <div className={`z-50 navbar shadow-sm ${bg} text-white fixed top-0 w-full`}>
+        <div className={`z-50 navbar shadow-sm ${bg} text-white fixed top-0 w-full px-4 md:px-10 lg:px-20`}>
   <div className="navbar-start"> 
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -46,7 +47,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <button className={`btn btn-md md:btn-lg bg-cream-sage text-forest-matte rounded-4xl md:px-8 shadow-none border-0`}>Login</button>
+    <Link to='/auth/login' className={`btn btn-md md:btn-lg bg-cream-sage text-forest-matte rounded-4xl md:px-8 shadow-none border-0`}>Login</Link>
   </div>
 </div>
     );
