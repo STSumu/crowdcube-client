@@ -27,13 +27,12 @@ const RunningCamp = () => {
 <Swiper 
                 className='w-full'
                 modules={[Autoplay, Navigation, Pagination, Scrollbar]}
-                spaceBetween={50} 
                 slidesPerView={3}
                 loop={true}
                 breakpoints={{
-                    320: { slidesPerView: 1 },
-                    640: { slidesPerView: 2 },
-                    1024: { slidesPerView: 3 },
+                   320: { slidesPerView: 1, spaceBetween: 20 },
+                    640: { slidesPerView: 2, spaceBetween: 25 },
+                    1024: { slidesPerView: 3, spaceBetween: 50},
                 }}
                 autoplay={{
                     delay: 3000,

@@ -8,13 +8,13 @@ import Footer from "../components/Footer";
 const PrivateLayout = () => {
   return (
     <div className="bg-cream-sage min-h-screen flex flex-col">
-      <header className="bg-forest-matte mb-20 lg:mb-5">
+      <header className="bg-forest-matte">
         <Navbar />
       </header>
       
-      <main className="lg:min-h-screen flex-1 px-4 md:px-10 lg:px-20 flex flex-col lg:flex-row justify-between items-center">
+      <main className="lg:min-h-screen flex-1 px-4 md:px-10 lg:px-20 flex flex-col lg:flex-row justify-between items-center pt-12 md:pb-10 md:pt-20">
 
-        <div className="w-full md:w-4/5 lg:w-1/2 py-8 lg:py-0 lg:px-20 flex justify-center items-center">
+        <div className="w-full md:w-4/5 lg:w-1/2 py-8 lg:py-5 lg:px-20 flex justify-center items-center">
           <Outlet />
         </div>
         

@@ -21,6 +21,20 @@
   --color-charcoal-green: #2C3E2D;
   --color-cream-sage: #F4F6F0;
 }
+.swiper-wrapper {
+  align-items: stretch !important;
+}
+
+.swiper-slide {
+  height: auto !important;
+  display: flex !important;
+}
+
+.swiper-slide > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .menu .active{
     background-color: #F4F6F0;
     color:#2F4F4F;
