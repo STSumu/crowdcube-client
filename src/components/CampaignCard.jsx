@@ -34,7 +34,7 @@ const CampaignCard = ({campaign}) => {
                 
                 <div className="card-actions justify-start mt-auto">
                     <button className="btn btn-lg text-white bg-eucalyptus hover:bg-forest-matte border-0 shadow-md hover:shadow-lg transition-all duration-200">
-                        Donate Now
+                        See More
                     </button>
                 </div>
             </div>

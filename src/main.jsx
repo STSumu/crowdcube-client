@@ -22,6 +22,18 @@ const router=createBrowserRouter([
       {
         path:'/',
         element:<Home></Home>,
+      },
+      {
+        path:'/myCampaign',
+        element:<PrivateRouter><h1>My Campaigns</h1></PrivateRouter>,
+      },
+      {
+        path:'/mydonations',
+        element:<PrivateRouter><h1>My Donations</h1></PrivateRouter>,
+      },
+      {
+        path:'/addCampaign',
+        element:<PrivateRouter><h1>Add new Campaign</h1></PrivateRouter>,
       }
     ]
   },{

@@ -4,18 +4,16 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import 'swiper/css/pagination';
 import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 
 const RunningCamp = () => {
     const [campaigns,setCampaigns]=useState([]);
-    const date=new Date();
-    // console.log(now);
     useEffect(()=>{
-          fetch('http://localhost:5000/campaigns')
+          fetch('http://localhost:5000/runningCampaigns')
           .then(res=>res.json())
           .then(data=>{
-            const runningCamp=data.filter((camp)=>new Date(camp.deadline) > date )
-            setCampaigns(runningCamp)})
+            setCampaigns(data)})
     },[])
     
     return (
@@ -29,6 +27,11 @@ const RunningCamp = () => {
                 modules={[Autoplay, Navigation, Pagination, Scrollbar]}
                 slidesPerView={3}
                 loop={true}
+                pagination={{type:'bullets',
+                   clickable: true,
+                   dynamicBullets: true,
+                   
+                }}
                 breakpoints={{
                    320: { slidesPerView: 1, spaceBetween: 20 },
                     640: { slidesPerView: 2, spaceBetween: 25 },

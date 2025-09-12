@@ -71,7 +71,12 @@ const Navbar = () => {
     </li>
     <li><button onClick={handleSignOut}>Sign Out</button></li>
   </ul>
-</div>: <Link to='/auth/login' className={`btn btn-md md:btn-lg bg-cream-sage text-forest-matte rounded-4xl md:px-8 shadow-none border-0`}>Login</Link>}
+</div>:
+<div className='space-x-2'>
+   <Link to='/auth/login' className={`btn btn-xs md:btn-md bg-cream-sage text-forest-matte rounded-lg md:px-8 shadow-none border-0`}>Login</Link>
+    <Link to='/auth/signUp' className={`btn btn-xs md:btn-md bg-cream-sage text-forest-matte rounded-lg md:px-8 shadow-none border-0`}>Register</Link>
+</div>
+}
   </div>
 </div>
     );
