@@ -6,16 +6,19 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
+import Loading from '../pages/Loading';
 
 const RunningCamp = () => {
     const [campaigns,setCampaigns]=useState([]);
+    const [loading,setLoading]=useState(true);
     useEffect(()=>{
           fetch('http://localhost:5000/runningCampaigns')
           .then(res=>res.json())
           .then(data=>{
-            setCampaigns(data)})
+            setCampaigns(data)},
+        setLoading(false))
     },[])
-    
+    if(loading) return <Loading></Loading>
     return (
         <div className='container mx-auto px-2 md:px-8 lg:px-16 py-20'>
             <div className='flex flex-col justify-center items-center'>

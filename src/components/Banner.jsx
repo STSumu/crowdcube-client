@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Pagination } from "swiper/modules";
 import Marquee from "react-fast-marquee";
@@ -6,88 +6,34 @@ import "swiper/css";
 import 'swiper/css/effect-fade';
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import edu from '../assets/education.jpg'
-import emergency from '../assets/emergency.jpg'
-import animal from '../assets/animals.avif'
-import community from '../assets/community.jpeg'
-import environment from '../assets/environment.jpg'
-import health from '../assets/health.jpg'
-import tech from '../assets/tech.jpg'
-import art from '../assets/art.jpeg'
 import { GiHealthNormal } from "react-icons/gi";
 import { RiGraduationCapLine } from "react-icons/ri";
 import { FaFirstAid, FaHandsHelping, FaLeaf, FaMicrochip, FaPalette,FaPaw } from "react-icons/fa";
+import Loading from './../pages/Loading';
 
 const Banner = () => {
   const [selectedIdx, setSelectedIdx] =useState(0);
-const swiperRef = useRef(null);
-  const categories=[
-        {
-            idx:1,
-            title:'Education',
-            headline: 'Empower Learning',
-            subtitle: 'Support scholarships and school projects to unlock brighter futures.',
-            image:edu,
-            icon:<RiGraduationCapLine></RiGraduationCapLine>,
-        },
-        {
-            idx:2,
-            title:'Health',
-            headline: 'Give the Gift of Healing',
-            subtitle: 'Fund medical treatments and health campaigns that save lives.',
-            image:health,
-            icon:<GiHealthNormal />
-,
-        },
-        {
-            idx:3,
-            title:'Technology',
-    headline: 'Back Innovation',
-    subtitle: 'Support gadgets, startups, and tech shaping tomorrow’s world.',
-            image:tech,
-            icon:<FaMicrochip></FaMicrochip>,
-        },
-        {
-            idx:4,
-            title:'Art & Culture',
-                headline: 'Fuel Creativity',
-    subtitle: 'Bring films, music, and cultural projects to life with your support.',
-            image:art,
-            icon:<FaPalette></FaPalette>,
-        },
-        {
-            idx:5,
-            title:'Community & Social Causes',
-                  headline: 'Stronger Together',
-    subtitle: 'Support local development and NGOs building better communities.',
-            image:community,
-            icon:<FaHandsHelping></FaHandsHelping>,
-        },
-        {
-            idx:6,
-            title:'Environment',
-    headline: 'Protect Our Planet',
-    subtitle: 'Join sustainability and green initiatives for a cleaner future.',
-            image:environment,
-            icon:<FaLeaf></FaLeaf>,
-        },
-        {
-            idx:7,
-            title:'Animals & Wildlife',
-            headline: 'Care for Animals',
-    subtitle: 'Protect wildlife and provide rescue and care for animals in need.',
-            image:animal,
-            icon:<FaPaw></FaPaw>,
-        },
-        {
-            idx:8,
-            title:'Emergency Relief',
-            headline: 'Act in Crisis',
-    subtitle: 'Bring urgent relief to communities facing disasters and emergencies.',
-            image:emergency,
-            icon:<FaFirstAid></FaFirstAid>,
-        },
-    ]
+  const [categories,setCategories]=useState([]);
+  const [loading,setLoading]=useState(true);
+  const iconMap = {
+  RiGraduationCapLine: <RiGraduationCapLine />,
+  GiHealthNormal: <GiHealthNormal />,
+  FaMicrochip: <FaMicrochip />,
+  FaPalette: <FaPalette />,
+  FaHandsHelping: <FaHandsHelping />,
+  FaLeaf: <FaLeaf />,
+  FaPaw: <FaPaw />,
+  FaFirstAid: <FaFirstAid />,
+};
+  const swiperRef = useRef(null);
+useEffect(()=>{
+  fetch('http://localhost:5000/categories')
+  .then((res)=>res.json())
+  .then((data)=>{setCategories(data),
+    setLoading(false);
+  })
+},[])
+  if(loading) return <Loading></Loading>
   return (
     <div className="relative bg-charcoal-green">
       <Swiper
@@ -144,7 +90,7 @@ const swiperRef = useRef(null);
                 swiperRef.current?.slideToLoop(idx, 500);
               }}
             >
-              <div className="stat-figure text-lg md:text-4xl opacity-50">{category.icon}</div>
+              <div className="stat-figure text-lg md:text-4xl opacity-50">{iconMap[category.icon]}</div>
               <div className="stat-value opacity-80 text-lg md:text-3xl">{category.title}</div>
             </div>
           ))}

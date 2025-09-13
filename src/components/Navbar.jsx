@@ -1,23 +1,23 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { FaUser } from 'react-icons/fa';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 
 const Navbar = () => {
     const links=<>
        <li><NavLink to='/'>Home</NavLink></li>
        <li><NavLink to='/allCampaign'>All Campaign</NavLink></li>
-       <li><NavLink to='/newCampaign'>Add new Campaign</NavLink></li>
+       <li><NavLink to='/addCampaign'>Add new Campaign</NavLink></li>
        <li><NavLink to='/mydonation'>My Donations</NavLink></li>
     </>
-    const paths=["/"];
     const {user,logOut}=useContext(AuthContext);
     const [bg,setbg]=useState('');
+    const location=useLocation();
       useEffect(() => {
     const handleScroll = () => {
       const scrollStatus = window.scrollY > 300;
 
-      if (!scrollStatus & paths.includes(location.pathname)) {
+      if (!scrollStatus & location.pathname==='/') {
          setbg("bg-transparent");
       } else {
          setbg("bg-forest-matte");

@@ -13,6 +13,7 @@ import PrivateLayout from './layouts/PrivateLayout';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Error from './pages/Error';
+import AddCampaign from './pages/AddCampaign';
 
 
 const router=createBrowserRouter([
@@ -26,16 +27,20 @@ const router=createBrowserRouter([
         element:<Home></Home>,
       },
       {
-        path:'/myCampaign',
-        element:<PrivateRouter><h1>My Campaigns</h1></PrivateRouter>,
+        path:'/allCampaign',
+        element:<PrivateRouter><h1>ALl Campaigns</h1></PrivateRouter>,
+      },
+      {
+        path:'/addCampaign',
+        element:<PrivateRouter><AddCampaign></AddCampaign></PrivateRouter>,
       },
       {
         path:'/mydonations',
         element:<PrivateRouter><h1>My Donations</h1></PrivateRouter>,
       },
       {
-        path:'/addCampaign',
-        element:<PrivateRouter><h1>Add new Campaign</h1></PrivateRouter>,
+        path:'/myCampaigns',
+        element:<PrivateRouter><h1>My Campaigns</h1></PrivateRouter>
       }
     ]
   },{
