@@ -12,6 +12,7 @@
   "dependencies": {
     "@dotlottie/dotlottie-js": "^1.4.0",
     "@emotion/react": "^11.14.0",
+    "@lottiefiles/dotlottie-react": "^0.16.1",
     "@tailwindcss/vite": "^4.1.8",
     "firebase": "^12.1.0",
     "localforage": "^1.10.0",

@@ -9,19 +9,25 @@ const auth=getAuth(app);
 const googleProvider=new GoogleAuthProvider();
 const AuthProvider = ({children}) => {
     const [user,setUser]=useState(null);
+    const [loading,setLoading]=useState(false)
     const emailSignUp=(email,pass)=>{
+      setLoading(true);
       return createUserWithEmailAndPassword(auth,email,pass);
     }
     const googleSignIn=()=>{
+      setLoading(true);
       return signInWithPopup(auth,googleProvider);
     }
     const emaillogin=(email,password)=>{
+      setLoading(true);
       return signInWithEmailAndPassword(auth,email,password);
     }
     const forgetPassword=(email)=>{
+      setLoading(true);
       return sendPasswordResetEmail(auth,email)
     }
     const logOut=()=>{
+      setLoading(true);
       return signOut(auth);
     }
     const authInfo={
@@ -31,10 +37,12 @@ const AuthProvider = ({children}) => {
           emaillogin,
           forgetPassword,
           logOut,
+          loading,
     }
     useEffect(()=>{
          const unsubscribe=onAuthStateChanged(auth,currentUser=>{
           setUser(currentUser);
+          setLoading(false);
          })
           return ()=>unsubscribe();
          }
