@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import Loading from '../pages/Loading';
+import { Slide } from "react-awesome-reveal";
 
 const RunningCamp = () => {
     const [campaigns,setCampaigns]=useState([]);
@@ -22,8 +23,10 @@ const RunningCamp = () => {
     return (
         <div className='container mx-auto px-2 md:px-8 lg:px-16 py-20'>
             <div className='flex flex-col justify-center items-center'>
-              <h1 className='text-forest-matte font-bold text-2xl md:text-4xl'>Running Campaigns</h1>
+              <Slide cascade damping={0.4} triggerOnce>
+                <h1 className='text-forest-matte font-bold text-2xl md:text-4xl'>Running Campaigns</h1>
               <p className='text-eucalyptus text-sm md:text-lg'>Engage with our currently running Campaigns</p>
+              </Slide>
             </div>
 <Swiper 
                 className='w-full'

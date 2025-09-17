@@ -1,8 +1,9 @@
 import React from 'react';
 import Category from './Category';
+import { Link } from 'react-router-dom';
 
 const CampaignCard = ({campaign}) => {
-    const {deadline,image,title,description,raised,goal,type}=campaign;
+    const {_id,deadline,image,title,description,raised,goal,type}=campaign;
     const percentage=(raised*100)/goal;
     
     return (
@@ -33,9 +34,9 @@ const CampaignCard = ({campaign}) => {
                 </div>
                 
                 <div className="card-actions justify-start mt-auto">
-                    <button className="btn btn-lg text-white bg-eucalyptus hover:bg-forest-matte border-0 shadow-md hover:shadow-lg transition-all duration-200">
+                    <Link to={`/campaignDetails/${_id}`} className="btn btn-lg text-white bg-eucalyptus hover:bg-forest-matte border-0 shadow-md hover:shadow-lg transition-all duration-200">
                         See More
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -54,6 +54,14 @@
 .swiper-slide > .active{
   background-color: #2F4F4F !important;
 }
+.rc-slider-track,
+.rc-slider-rail {
+  border-radius: 9999px;
+  top: 50% !important;
+  transform: translateY(-50%);
+}
+
+
 
 .menu .active{
     background-color: #F4F6F0;

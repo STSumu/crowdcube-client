@@ -10,6 +10,7 @@ import { GiHealthNormal } from "react-icons/gi";
 import { RiGraduationCapLine } from "react-icons/ri";
 import { FaFirstAid, FaHandsHelping, FaLeaf, FaMicrochip, FaPalette,FaPaw } from "react-icons/fa";
 import Loading from './../pages/Loading';
+import { Fade } from "react-awesome-reveal";
 
 const Banner = () => {
   const [selectedIdx, setSelectedIdx] =useState(0);
@@ -62,13 +63,15 @@ useEffect(()=>{
               <div className="hero-overlay bg-black/40 absolute inset-0 z-10"></div>
               <div className="hero-content text-neutral-content text-center relative z-20">
                 <div className="max-w-md">
-                  <h1 className="mb-5 text-5xl font-bold text-cream-sage font-display">
+                  <Fade key={selectedIdx} cascade damping={0.5} triggerOnce>
+ <h1 className="mb-5 text-5xl font-bold text-cream-sage font-display">
                     {cat.headline}
                   </h1>
                   <p className="mb-5 text-mint-matte text-lg italic">{cat.subtitle}</p>
                   <button className="btn btn-lg bg-forest-matte text-cream-sage shadow-lg rounded-4xl border-none shadow-[#0b1515]">
                     Get Started
                   </button>
+</Fade>
                 </div>
               </div>
             </div>

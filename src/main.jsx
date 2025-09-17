@@ -14,6 +14,9 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import Error from './pages/Error';
 import AddCampaign from './pages/AddCampaign';
+import AllCampaign from './pages/AllCampaign';
+import 'animate.css';
+import CampaignDetails from './pages/CampaignDetails';
 
 
 const router=createBrowserRouter([
@@ -28,7 +31,7 @@ const router=createBrowserRouter([
       },
       {
         path:'/allCampaign',
-        element:<PrivateRouter><h1>ALl Campaigns</h1></PrivateRouter>,
+        element:<PrivateRouter><AllCampaign></AllCampaign></PrivateRouter>,
       },
       {
         path:'/addCampaign',
@@ -41,6 +44,11 @@ const router=createBrowserRouter([
       {
         path:'/myCampaigns',
         element:<PrivateRouter><h1>My Campaigns</h1></PrivateRouter>
+      },
+      {
+        path:'/campaignDetails/:campId',
+        element:<PrivateRouter><CampaignDetails></CampaignDetails></PrivateRouter>,
+        loader:({params})=>fetch(`http://localhost:5000/campaigns/${params.campId}`)
       }
     ]
   },{

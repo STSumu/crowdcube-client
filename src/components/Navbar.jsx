@@ -62,14 +62,17 @@ const Navbar = () => {
     {user ? <div className="dropdown dropdown-end">
   <div tabIndex={0} role="button" className={`btn m-1 ${bg} shadow-none border-none`}>{user.photoURL ? <img className='w-8 h-8 rounded-full' src={user.photoURL} />:<FaUser className='w-8 h-8 text-cream-sage rounded-full'></FaUser>}</div>
   <ul tabIndex={0} className="dropdown-content menu text-forest-matte *:hover:bg-forest-matte *:hover:text-cream-sage bg-cream-sage rounded-box z-1 w-52 p-2 shadow-sm">
-    <li className='flex flex-row gap-5 justify-between items-center border-b border-forest-matte'>
-      {user.photoURL ? <img className="w-4 h-4 rounded-full" src={user.photoURL} alt="" />: <FaUser></FaUser>}
+    <li><div className='flex justify-between items-center border-b border-forest-matte'>
+      {user.photoURL ? <img className="w-8 h-8 rounded-full" src={user.photoURL} alt="" />: <div className='bg-charcoal-green font-bold flex items-center justify-center text-cream-sage rounded-full w-8 h-8'>{user?.email.charAt(0).toUpperCase()}</div>}
       <div className='flex flex-col'>
         <h3 className='font-bold'>{user.displayName}</h3>
         <p>{user.email}</p>
       </div>
+    </div>
     </li>
-    <li><button onClick={handleSignOut}>Sign Out</button></li>
+    <li><Link to='/mydonations'>My Donations</Link></li>
+    <li><Link to='/myCampaigns'>My Campaigns</Link></li>
+        <li><button onClick={handleSignOut}>Sign Out</button></li>
   </ul>
 </div>:
 <div className='space-x-2'>
