@@ -6,9 +6,10 @@ import { AuthContext } from '../provider/AuthProvider';
 const Navbar = () => {
     const links=<>
        <li><NavLink to='/'>Home</NavLink></li>
-       <li><NavLink to='/allCampaign'>All Campaign</NavLink></li>
+       <li><NavLink to='/campaigns'>All Campaign</NavLink></li>
        <li><NavLink to='/addCampaign'>Add new Campaign</NavLink></li>
-       <li><NavLink to='/mydonation'>My Donations</NavLink></li>
+       <li><NavLink to='/myDonations'>My Donations</NavLink></li>
+       <li><NavLink to='/myCampaign'>My Campaign</NavLink></li>
     </>
     const {user,logOut}=useContext(AuthContext);
     const [bg,setbg]=useState('');
@@ -51,7 +52,7 @@ const Navbar = () => {
         {links}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">Crowdcube</a>
+    <a className="btn btn-ghost text-xl"><img src='/logo.png' className='hidden md:flex w-30'></img>Crowdcube</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 font-semibold">

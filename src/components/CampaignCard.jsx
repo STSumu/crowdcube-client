@@ -34,7 +34,7 @@ const CampaignCard = ({campaign}) => {
                 </div>
                 
                 <div className="card-actions justify-start mt-auto">
-                    <Link to={`/campaignDetails/${_id}`} className="btn btn-lg text-white bg-eucalyptus hover:bg-forest-matte border-0 shadow-md hover:shadow-lg transition-all duration-200">
+                    <Link to={`/campaign/${_id}`} className="btn btn-lg text-white bg-eucalyptus hover:bg-forest-matte border-0 shadow-md hover:shadow-lg transition-all duration-200">
                         See More
                     </Link>
                 </div>

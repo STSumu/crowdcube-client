@@ -20,7 +20,7 @@ const AddCampaign = () => {
   const handleformSubmit=(e)=>{
     e.preventDefault();
     const userEmail=user.email;
-    const userName=user.name;
+    const userName=user?.name || 'User';
     const title=e.target.title.value;
     const deadline=e.target.deadline.value;
     const type=e.target.type.value;
@@ -33,12 +33,13 @@ const AddCampaign = () => {
 title,
 type,
 description,
-minDonation,
+minDonation : Number(minDonation),
 deadline,
 userEmail,
 userName,
 createdAt:new Date(),
-goal,
+goal:Number(goal),
+raised:Number(0),
     }
     console.log(campaign);
 

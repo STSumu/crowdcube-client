@@ -17,14 +17,18 @@ const AllCampaign = () => {
  })
   if(loading) return <Loading></Loading>
   return (
-    <div className="overflow-x-auto py-20 px-4 md:px-8 lg:px-20">
-  <table className="table">
+    <div className="overflow-x-auto min-h-screen py-20 px-4 md:px-8 lg:px-25 mt-10 mb-10" style={{backgroundImage:`url(/tablebg.png)`,
+        backgroundPosition:'center',
+        backgroundRepeat:'no-repeat',
+        backgroundSize:'cover'
+    }}>
+  <table className="table bg-mint-matte/10 border border-charcoal-green/20 text-charcoal-green">
     {/* head */}
     <thead>
       <tr>
         <th>Campaign</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
+        <th>Category</th>
+        <th>Organizer</th>
         <th></th>
       </tr>
     </thead>
@@ -44,18 +48,15 @@ const AllCampaign = () => {
             </div>
             <div>
               <div className="font-bold">{camp.title}</div>
-              <div className="text-sm opacity-50">United States</div>
             </div>
           </div>
         </td>
         <td>
-          Zemlak, Daniel and Leannon
-          <br />
-          <span className="badge badge-ghost badge-sm">{camp.type}</span>
+          <span className="text-lg font-semibold">{camp.type}</span>
         </td>
-        <td>Purple</td>
+        <td>{camp.userName}</td>
         <th>
-          <Link key={idx} className="btn btn-ghost btn-xs" to={`/campaignDetails/${camp._id}`}>details</Link>
+          <Link key={idx} className="btn btn-md hover:bg-charcoal-green text-cream-sage bg-eucalyptus" to={`/campaign/${camp._id}`}>See details</Link>
         </th>
       </tr>
       )
@@ -63,11 +64,7 @@ const AllCampaign = () => {
       </tbody>
     <tfoot>
       <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
-        <th></th>
+        <th><Link to='/'>Go Home</Link></th>
       </tr>
     </tfoot>
   </table>

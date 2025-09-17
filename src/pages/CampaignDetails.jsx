@@ -9,6 +9,14 @@ import "@lottiefiles/lottie-player";
 
 const CampaignDetails = () => {
   const campaign = useLoaderData();
+  const isValidUrl = (str) => {
+  try {
+    new URL(str);
+    return true;
+  } catch {
+    return false;
+  }
+};
   const {
     _id,
     image,
@@ -22,8 +30,9 @@ const CampaignDetails = () => {
     type,
     minDonation,
   } = campaign;
+  console.log(campaign);
   const {user}=useContext(AuthContext);
-  const [newRaised,setRaised]=useState(Number(raised));
+  const [newRaised,setRaised]=useState(raised);
   const [error,setError]=useState("");
   
   const donationRef=useRef();
@@ -110,12 +119,21 @@ confirmButtonColor: "#7FB069",
     <div className="relative">
       <div
         className="hero min-h-screen"
-        style={{
+         style={
+    isValidUrl(image)
+      ? {
           backgroundImage: `url(${image})`,
           backgroundAttachment: "fixed",
           backgroundSize: "cover",
           backgroundPosition: "center",
-        }}
+        }
+      : {
+        backgroundImage: `url(/bg4.png)`,
+          backgroundAttachment: "fixed",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+     }
+  }
       >
         <div className="hero-overlay"></div>
         <div className="hero-content text-center w-full *:w-full *:lg:w-4/5 text-white z-10 flex flex-col gap-10 p-2 md:p-8 lg:p-16 mt-20 mb-10">
@@ -178,7 +196,7 @@ confirmButtonColor: "#7FB069",
 
               <div className="stat shadow bg-cream-sage/80 rounded-lg p-4">
                 <div className="stat-title text-lg font-semibold">Deadline</div>
-                <div className="stat-value">
+                <div className="stat-value text-2xl">
                   {new Date(deadline).toLocaleDateString("en-US", {
                     year: "numeric",
                     month: "long",

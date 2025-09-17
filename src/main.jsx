@@ -17,6 +17,7 @@ import AddCampaign from './pages/AddCampaign';
 import AllCampaign from './pages/AllCampaign';
 import 'animate.css';
 import CampaignDetails from './pages/CampaignDetails';
+import MyCampaigns from './pages/MyCampaigns';
 
 
 const router=createBrowserRouter([
@@ -30,7 +31,7 @@ const router=createBrowserRouter([
         element:<Home></Home>,
       },
       {
-        path:'/allCampaign',
+        path:'/campaigns',
         element:<PrivateRouter><AllCampaign></AllCampaign></PrivateRouter>,
       },
       {
@@ -38,15 +39,19 @@ const router=createBrowserRouter([
         element:<PrivateRouter><AddCampaign></AddCampaign></PrivateRouter>,
       },
       {
-        path:'/mydonations',
+        path:'/myDonations',
         element:<PrivateRouter><h1>My Donations</h1></PrivateRouter>,
       },
       {
-        path:'/myCampaigns',
-        element:<PrivateRouter><h1>My Campaigns</h1></PrivateRouter>
+        path:'/myCampaign',
+        element:<PrivateRouter><MyCampaigns></MyCampaigns></PrivateRouter>
       },
       {
-        path:'/campaignDetails/:campId',
+        path:'/updateCampaign/:id',
+        element:<PrivateRouter><h1>Update</h1></PrivateRouter>
+      },
+      {
+        path:'/campaign/:campId',
         element:<PrivateRouter><CampaignDetails></CampaignDetails></PrivateRouter>,
         loader:({params})=>fetch(`http://localhost:5000/campaigns/${params.campId}`)
       }
