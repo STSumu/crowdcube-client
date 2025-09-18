@@ -18,6 +18,7 @@ import AllCampaign from './pages/AllCampaign';
 import 'animate.css';
 import CampaignDetails from './pages/CampaignDetails';
 import MyCampaigns from './pages/MyCampaigns';
+import UpdateCampaign from './pages/UpdateCampaign';
 
 
 const router=createBrowserRouter([
@@ -48,7 +49,8 @@ const router=createBrowserRouter([
       },
       {
         path:'/updateCampaign/:id',
-        element:<PrivateRouter><h1>Update</h1></PrivateRouter>
+        element:<PrivateRouter><UpdateCampaign></UpdateCampaign></PrivateRouter>,
+        loader:({params})=>fetch(`http://localhost:5000/campaigns/${params.id}`)
       },
       {
         path:'/campaign/:campId',

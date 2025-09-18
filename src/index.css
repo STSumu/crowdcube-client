@@ -20,6 +20,8 @@
   --color-forest-matte: #2F4F4F;
   --color-charcoal-green: #2C3E2D;
   --color-cream-sage: #F4F6F0;
+  --color-danger: #C85A54;     
+--color-warning: #D4A574;    
 }
 .swiper-wrapper {
   align-items: stretch !important;

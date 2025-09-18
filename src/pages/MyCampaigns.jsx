@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import Loading from "./Loading";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { FaPen, FaTrash } from "react-icons/fa";
 import { Tooltip } from "react-tooltip";
@@ -11,6 +11,7 @@ const MyCampaigns = () => {
   const [campaigns, setCampaings] = useState([]);
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
+  const navigate=useNavigate();
   useEffect(() => {
     fetch(`http://localhost:5000/myCampaign/${user?.email}`)
       .then((res) => res.json())
@@ -19,15 +20,20 @@ const MyCampaigns = () => {
         setLoading(false);
       });
   });
+  const timeLeft=(date)=>{
+    const now=new Date();
+    const deadline=new Date(date);
+ const remaining = Math.ceil((deadline - now) / (1000 * 60 * 60 * 24));
+  return remaining > 0 ? `${remaining} day(s)` : 'Expired';
+  }
   const handleDelete = (id) => {
-    console.log(id)
     Swal.fire({
       title: "Are you sure you want to delete the campaign?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#7FB069",
-      cancelButtonColor: "#b22424",
+      cancelButtonColor: "#C85A54",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
@@ -57,6 +63,21 @@ const MyCampaigns = () => {
 
     
   };
+  const handleUpdate=(id)=>{
+    Swal.fire({
+      title: "Update the campaign?",
+      text: "",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#7FB069",
+      cancelButtonColor: "#C85A54",
+      confirmButtonText: "Yes",
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+          navigate(`/updateCampaign/${id}`)
+      }})
+  }
   if (loading) return <Loading></Loading>;
   return (
     <div
@@ -68,14 +89,16 @@ const MyCampaigns = () => {
         backgroundSize: "cover",
       }}
     >
-<div className="overflow-x-auto bg-mint-matte/10 border border-charcoal-green/20 rounded-lg">
+                      <Tooltip id="my-tooltip" className="z-50"style={{ backgroundColor: "#2C3E2D", color: "#F4F6F0", font:'bold' }}/>
+<div className="overflow-x-auto bg-mint-matte/15 border border-charcoal-green/20 rounded-lg">
     <table className="table w-full">
         <thead>
           <tr className="font-bold text-charcoal-green text-xl">
             <th>Campaign</th>
             <th>Category</th>
-            <th>Fund Raised</th>
-            <th>Deadline</th>
+            <th>Progress</th>
+            <th>Time Left</th>
+            <th>Status</th>
             <th></th>
           </tr>
         </thead>
@@ -93,36 +116,42 @@ const MyCampaigns = () => {
                       </div>
                     </div>
                     <div>
-                      <div className="font-bold font-display text-2xl">
+                      <div className="font-bold font-display text-xl text-forest-matte lg:text-2xl">
                         {camp.title}
                       </div>
                     </div>
                   </div>
                 </Link>
               </td>
-              <td ><div className="rounded-lg bg-charcoal-green text-cream-sage border-0 shadow-none text-xl p-2">
-                  {camp.type} </div>
+              <td ><span className="text-charcoal-green font-semibold text-lg">
+  {camp.type}
+</span>
               </td>
-              <td>${camp.raised}</td>
-              <td>{camp.deadline}</td>
+              <td><div className="flex flex-col">
+                {camp.raised*100/camp.goal}%
+                <progress className="progress w-20 bg-mint-matte text-charcoal-green" value={camp.raised*100/camp.goal} max="100"></progress>
+</div></td>
+              <td>{timeLeft(camp.deadline)}</td>
+              <td ><div className={`text-cream-sage p-2 rounded-xl text-center font-bold ${camp.raised >= camp.goal ? 'bg-eucalyptus' : new Date(camp.deadline) < new Date() ? 'bg-danger' : 'bg-charcoal-green'}`}>
+  {camp.raised >= camp.goal ? 'Completed' : new Date(camp.deadline) < new Date() ? 'Expired' : 'Active'}
+</div></td>
               <th className="*:shadow-none *:border-0 space-x-4 flex">
-                <Link
+                <button
                   data-tooltip-id="my-tooltip"
                   data-tooltip-content="Update"
-                  className="btn btn-md bg-eucalyptus text-cream-sage"
-                  to={`/campaign/${camp._id}`}
+                  className="btn btn-md bg-eucalyptus hover:bg-charcoal-green/90 shadow-sm text-cream-sage"
+                  onClick={()=>handleUpdate(camp._id)}
                 >
                   <FaPen></FaPen>
-                </Link>
+                </button>
                 <button
                   onClick={() => handleDelete(camp._id)}
                   data-tooltip-id="my-tooltip"
                   data-tooltip-content="Delete"
-                  className="btn btn-md bg-red-700 text-cream-sage"
+                  className="btn btn-md bg-danger hover:bg-[#b0504b] shadow-sm text-cream-sage"
                 >
                   <FaTrash></FaTrash>
                 </button>
-                <Tooltip id="my-tooltip" />
               </th>
             </tr>
           ))}

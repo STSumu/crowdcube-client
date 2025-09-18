@@ -61,7 +61,7 @@ const CampaignDetails = () => {
     icon: "question",
     showCancelButton: true,
     confirmButtonColor: "#7FB069",
-    cancelButtonColor: "#d33",
+    cancelButtonColor: "#C85A54",
     confirmButtonText: "Yes, donate!",
   }).then((result) => {
     if (result.isConfirmed) {
