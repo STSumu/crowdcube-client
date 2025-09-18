@@ -19,6 +19,7 @@ import 'animate.css';
 import CampaignDetails from './pages/CampaignDetails';
 import MyCampaigns from './pages/MyCampaigns';
 import UpdateCampaign from './pages/UpdateCampaign';
+import MyDonations from './pages/MyDonations';
 
 
 const router=createBrowserRouter([
@@ -41,7 +42,7 @@ const router=createBrowserRouter([
       },
       {
         path:'/myDonations',
-        element:<PrivateRouter><h1>My Donations</h1></PrivateRouter>,
+        element:<PrivateRouter><MyDonations></MyDonations></PrivateRouter>,
       },
       {
         path:'/myCampaign',

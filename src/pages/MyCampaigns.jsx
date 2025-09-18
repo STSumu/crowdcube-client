@@ -89,6 +89,20 @@ const MyCampaigns = () => {
         backgroundSize: "cover",
       }}
     >
+      <div className="text-center mb-8">
+  <h1 className="text-3xl lg:text-4xl font-bold text-charcoal-green mb-4">
+    <Typewriter
+      words={['Track Your Campaigns']}
+      loop={0}
+      cursor
+      cursorStyle='|'
+      typeSpeed={70}
+      deleteSpeed={50}
+      delaySpeed={1500}
+    />
+  </h1>
+  <p className="text-forest-matte text-lg">Monitor and update your active fundraising campaigns</p>
+</div>
                       <Tooltip id="my-tooltip" className="z-50"style={{ backgroundColor: "#2C3E2D", color: "#F4F6F0", font:'bold' }}/>
 <div className="overflow-x-auto bg-mint-matte/15 border border-charcoal-green/20 rounded-lg">
     <table className="table w-full">
@@ -128,14 +142,22 @@ const MyCampaigns = () => {
 </span>
               </td>
               <td><div className="flex flex-col">
-                {camp.raised*100/camp.goal}%
-                <progress className="progress w-20 bg-mint-matte text-charcoal-green" value={camp.raised*100/camp.goal} max="100"></progress>
+                {Math.round((camp.raised*100)/camp.goal)}%
+                <progress className="progress w-20 bg-mint-matte text-charcoal-green" value={Math.round((camp.raised*100)/camp.goal)} max="100"></progress>
 </div></td>
               <td>{timeLeft(camp.deadline)}</td>
-              <td ><div className={`text-cream-sage p-2 rounded-xl text-center font-bold ${camp.raised >= camp.goal ? 'bg-eucalyptus' : new Date(camp.deadline) < new Date() ? 'bg-danger' : 'bg-charcoal-green'}`}>
-  {camp.raised >= camp.goal ? 'Completed' : new Date(camp.deadline) < new Date() ? 'Expired' : 'Active'}
-</div></td>
-              <th className="*:shadow-none *:border-0 space-x-4 flex">
+<td>
+  <div className={`p-2 rounded-xl text-center font-bold ${
+    camp.raised >= camp.goal 
+      ? 'bg-eucalyptus text-cream-sage' 
+      : new Date(camp.deadline) < new Date() 
+        ? 'bg-[#C85A54] text-cream-sage' 
+        : 'bg-forest-matte text-cream-sage'
+  }`}>
+    {camp.raised >= camp.goal ? 'Completed' : new Date(camp.deadline) < new Date() ? 'Expired' : 'Active'}
+  </div>
+</td>
+              <th><div className="*:shadow-none *:border-0 space-x-4 flex items-center">
                 <button
                   data-tooltip-id="my-tooltip"
                   data-tooltip-content="Update"
@@ -152,7 +174,7 @@ const MyCampaigns = () => {
                 >
                   <FaTrash></FaTrash>
                 </button>
-              </th>
+              </div></th>
             </tr>
           ))}
         </tbody>
