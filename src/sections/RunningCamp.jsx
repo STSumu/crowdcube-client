@@ -23,10 +23,10 @@ const RunningCamp = () => {
     return (
         <div className='container mx-auto px-2 md:px-8 lg:px-16 py-20'>
             <div className='flex flex-col justify-center items-center'>
-              <Slide cascade damping={0.4} triggerOnce>
+              <div>
                 <h1 className='text-forest-matte font-bold text-2xl md:text-4xl'>Running Campaigns</h1>
               <p className='text-eucalyptus text-sm md:text-lg'>Engage with our currently running Campaigns</p>
-              </Slide>
+              </div>
             </div>
 <Swiper 
                 className='w-full'

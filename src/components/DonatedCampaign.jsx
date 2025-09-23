@@ -23,16 +23,16 @@ const DonatedCampaign = ({ donatedCampaign,flex }) => {
     status='Active';
   }
   return (
-    <div className={`card md:card-side border shadow-sm ${flex ? 'md:flex-row-reverse bg-gradient-to-r from-mint-matte to-eucalyptus border-eucalyptus/50 text-cream-sage' 
+    <div className={`card md:card-side border md:h-72 shadow-sm ${flex ? 'md:flex-row-reverse bg-gradient-to-r from-mint-matte to-eucalyptus border-eucalyptus/50 text-cream-sage' 
         : 'md:flex-row bg-gradient-to-r from-cream-sage to-eucalyptus/50 border-charcoal-green/30 text-charcoal-green'
     }`}>
       <figure className="md:w-2/5 h-full p-2">
-        <img
-          src={image || '/bg4.png'}
-          alt="Campaign"
-          className="w-full h-full object-cover rounded-lg"
-        />
-      </figure>
+    <img
+      src={image || '/bg4.png'}
+      alt="Campaign"
+      className="w-full h-full object-cover rounded-lg"
+    />
+  </figure>
       <div className="card-body md:w-3/5">
         <h2 className="card-title">{title}
             <span className={`px-2 py-1 rounded text-xs font-bold ${

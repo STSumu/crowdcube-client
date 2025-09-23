@@ -12,7 +12,7 @@ const MyDonations = () => {
         .then(data=>setCampaigns(data))
     },[])
     return (
-        <div className='px-4 md:px-8 lg:px-25 pb-10 pt-25 flex flex-col justify-center items-center' style={{
+        <div className='min-h-screen px-4 md:px-8 lg:px-25 pb-10 pt-25 flex flex-col items-center' style={{
         backgroundImage: `url(/tablebg.png)`,
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
