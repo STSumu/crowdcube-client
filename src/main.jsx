@@ -20,7 +20,9 @@ import CampaignDetails from './pages/CampaignDetails';
 import MyCampaigns from './pages/MyCampaigns';
 import UpdateCampaign from './pages/UpdateCampaign';
 import MyDonations from './pages/MyDonations';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 const router=createBrowserRouter([
   {

@@ -105,90 +105,95 @@ const HowItWorks = () => {
     },
   ];
   return (
-    <div className="px-5 py-20  md:p-10 lg:p-20 bg-mint-matte/10 my-10">
-      <div className='flex flex-col justify-center items-center'>
-                    <div className="">
-                      <h1 className='text-forest-matte font-bold text-2xl md:text-4xl'>Running Campaigns</h1>
-                    <p className='text-eucalyptus text-sm md:text-lg'>Engage with our currently running Campaigns</p>
-                    </div>
-                  </div>
-      <div className="relative min-h-screen bg-transparent flex flex-col lg:flex-row items-center justify-between ">
-      {/* Steps Section */}
-      <div className="w-full lg:w-1/3 z-20 flex flex-col items-center justify-center">
-        <ul className="steps steps-horizontal w-full lg:steps-vertical">
-          {steps.map((step, index) => (
-            <li 
-  key={index} 
-  className={`step transition-all duration-300 text-lg italic ${
-    index < selectedStep 
-      ? 'step-custom text-charcoal-green after:!bg-eucalyptus before:!bg-eucalyptus'
-      : index === selectedStep 
-        ? 'step-custom text-eucalyptus before:!bg-eucalyptus after:!bg-eucalyptus font-bold'
-        : ' text-mint-matte before:!bg-mint-matte/30 after:!bg-mint-matte/30' 
-  }`}
->
-  {step.title}
-</li>
-          ))}
-        </ul>
-      </div>
+    <div className="px-2 pt-5 md:px-10 lg:px-25 mt-20">
+      <Fade
+        cascade
+        damping={0.5}
+        className="flex flex-col justify-center items-center gap-2 mb-5"
+      >
+        <h2 className="text-forest-matte font-bold text-2xl md:text-4xl">
+          Running Campaigns
+        </h2>
+        <p className="text-eucalyptus text-sm md:text-lg">
+          Engage with our currently running Campaigns
+        </p>
+      </Fade>
+      <div className="min-h-screen bg-transparent flex flex-col lg:flex-row items-center gap-20 lg:justify-between ">
+        {/* steps*/}
+        <div data-aos="slide-right" className="w-full lg:w-1/3 z-20 flex flex-col items-center justify-center">
+          <ul className="steps steps-horizontal w-full lg:steps-vertical">
+            {steps.map((step, index) => (
+              <li
+                key={index}
+                className={`step transition-all duration-300 text-lg italic ${
+                  index < selectedStep
+                    ? "step-custom text-charcoal-green after:!bg-eucalyptus before:!bg-eucalyptus"
+                    : index === selectedStep
+                    ? "step-custom text-eucalyptus before:!bg-eucalyptus after:!bg-eucalyptus font-bold"
+                    : " text-mint-matte before:!bg-mint-matte/30 after:!bg-mint-matte/30"
+                }`}
+              >
+                {step.title}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      {/* Carousel Section */}
-      <div className="w-full lg:w-2/3 z-20 flex flex-col items-center justify-center">
-        <Swiper
-          direction={"vertical"}
-          autoHeight={true}
-          pagination={{
-            clickable: true,
-          }}
-          spaceBetween={30}
-          centeredSlides={true}
-          mousewheel={true}
-          autoplay={{
-  delay: 2500,
-  disableOnInteraction: false,
-  pauseOnMouseEnter: true,     
-}}
-          modules={[Autoplay, Mousewheel, Pagination]}
-          className="mySwiper w-full"
-          onSlideChange={(swiper) => {
-            let currentSlideindex = swiper.activeIndex;
-            let count = 0;
-            for (let i = 0; i < steps.length; i++) {
-              if (currentSlideindex < count + steps[i].images.length) {
-                setSelectedStep(i);
-                break;
+        {/* carousel*/}
+        <div data-aos="slide-left" className="w-full lg:w-2/3 z-20 flex flex-col items-center justify-center">
+          <Swiper
+            direction={"vertical"}
+            autoHeight={true}
+            pagination={{
+              clickable: true,
+            }}
+            spaceBetween={30}
+            centeredSlides={true}
+            mousewheel={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            modules={[Autoplay, Mousewheel, Pagination]}
+            className="mySwiper w-full"
+            onSlideChange={(swiper) => {
+              let currentSlideindex = swiper.activeIndex;
+              let count = 0;
+              for (let i = 0; i < steps.length; i++) {
+                if (currentSlideindex < count + steps[i].images.length) {
+                  setSelectedStep(i);
+                  break;
+                }
+                count += steps[i].images.length;
               }
-              count += steps[i].images.length;
-            }
-          }}
-        >
-          {steps.map((step, idx) =>
-            step.images.map((img, imgIdx) => (
-              <SwiperSlide key={`${idx}-${imgIdx}`}>
-                <div className="h-full w-full p-2">
-                  <img
-                    src={img}
-                    alt={`${step.title}-${imgIdx}`}
-                    className="rounded-xl shadow-lg h-full object-contain"
-                  />
-                </div>
-              </SwiperSlide>
-            ))
-          )}
-        </Swiper>
+            }}
+          >
+            {steps.map((step, idx) =>
+              step.images.map((img, imgIdx) => (
+                <SwiperSlide key={`${idx}-${imgIdx}`}>
+                  <div className="h-full w-full p-2">
+                    <img
+                      src={img}
+                      alt={`${step.title}-${imgIdx}`}
+                      className="rounded-xl shadow-lg h-full object-contain"
+                    />
+                  </div>
+                </SwiperSlide>
+              ))
+            )}
+          </Swiper>
 
-        <Slide
-  key={`${selectedStep}-${Date.now()}`}
-  direction="up"
-  triggerOnce={false} 
-  className="mt-8 text-xl text-eucalyptus font-semibold"
->
-  {steps[selectedStep].description}
-</Slide>
-
+          <Slide
+            key={`${selectedStep}-${Date.now()}`}
+            direction="up"
+            triggerOnce={false}
+            className="mt-8 text-sm md:text-xl text-eucalyptus font-semibold"
+          >
+            {steps[selectedStep].description}
+          </Slide>
+        </div>
       </div>
-    </div>
     </div>
   );
 };

@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import Loading from '../pages/Loading';
-import { Slide } from "react-awesome-reveal";
+import { Fade, Slide } from "react-awesome-reveal";
 
 const RunningCamp = () => {
     const [campaigns,setCampaigns]=useState([]);
@@ -22,13 +22,13 @@ const RunningCamp = () => {
     if(loading) return <Loading></Loading>
     return (
         <div className='container mx-auto px-2 md:px-8 lg:px-16 py-20'>
-            <div className='flex flex-col justify-center items-center'>
-              <div>
-                <h1 className='text-forest-matte font-bold text-2xl md:text-4xl'>Running Campaigns</h1>
+            <Fade cascade damping={0.5} className="flex flex-col justify-center items-center gap-2 mb-5">
+              
+                <h2 className='text-forest-matte font-bold text-2xl md:text-4xl'>Running Campaigns</h2>
               <p className='text-eucalyptus text-sm md:text-lg'>Engage with our currently running Campaigns</p>
-              </div>
-            </div>
-<Swiper 
+              
+            </Fade>
+<Swiper data-aos="fade-up"
                 className='w-full'
                 modules={[Autoplay, Navigation, Pagination, Scrollbar]}
                 slidesPerView={3}
@@ -49,7 +49,7 @@ const RunningCamp = () => {
                 }}
             >
                 {campaigns.length === 0 ?
-                    <div className='flex justify-center items-center'>
+                    <div data-aos="slide-up" className='flex justify-center items-center'>
                         <h1 className='text-4xl text-gray-500'>
                             No campaigns to show.
                         </h1>

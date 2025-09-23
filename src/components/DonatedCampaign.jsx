@@ -23,9 +23,9 @@ const DonatedCampaign = ({ donatedCampaign,flex }) => {
     status='Active';
   }
   return (
-    <div className={`card md:card-side border md:h-72 shadow-sm ${flex ? 'md:flex-row-reverse bg-gradient-to-r from-mint-matte to-eucalyptus border-eucalyptus/50 text-cream-sage' 
-        : 'md:flex-row bg-gradient-to-r from-cream-sage to-eucalyptus/50 border-charcoal-green/30 text-charcoal-green'
-    }`}>
+    <div className={`card md:card-side border md:h-72 shadow-sm text-charcoal-green ${flex ? 'md:flex-row-reverse bg-gradient-to-r from-mint-matte to-eucalyptus border-eucalyptus/50' 
+        : 'md:flex-row bg-gradient-to-r from-cream-sage to-eucalyptus/50 border-charcoal-green/30 '
+    }`} data-aos={`${flex ? "fade-right" : "fade-left"}`}>
       <figure className="md:w-2/5 h-full p-2">
     <img
       src={image || '/bg4.png'}

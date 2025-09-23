@@ -138,7 +138,7 @@ confirmButtonColor: "#7FB069",
         <div className="hero-overlay"></div>
         <div className="hero-content text-center w-full *:w-full *:lg:w-4/5 text-white z-10 flex flex-col gap-10 p-2 md:p-8 lg:p-16 mt-20 mb-10">
           {/* title div  */}
-          <div className="bg-cream-sage/10 border backdrop-blur-xs rounded-lg border-cream-sage/20 p-4 lg:p-8 flex flex-col justify-center items-center gap-4">
+          <div data-aos="fade-up" className="bg-cream-sage/10 border backdrop-blur-xs rounded-lg border-cream-sage/20 p-4 lg:p-8 flex flex-col justify-center items-center gap-4">
             <h1 className="text-3xl md:text-4xl font-bold font-display">
               {title}
             </h1>
@@ -181,7 +181,7 @@ confirmButtonColor: "#7FB069",
             </div>
           </div>
           {/* about campaign div  */}
-          <div className="bg-cream-sage/10 border backdrop-blur-xs rounded-lg border-cream-sage/20 p-4 lg:p-8 space-y-4 flex flex-col justify-center items-center">
+          <div data-aos="fade-up" className="bg-cream-sage/10 border backdrop-blur-xs rounded-lg border-cream-sage/20 p-4 lg:p-8 space-y-4 flex flex-col justify-center items-center">
             <h1 className="text-xl md:text-2xl font-bold font-display">
               About this Campaign
             </h1>
@@ -208,7 +208,7 @@ confirmButtonColor: "#7FB069",
           </div>
           {/* user info div  */}
 
-          <div className="bg-cream-sage/10 border backdrop-blur-xs rounded-lg border-cream-sage/20 p-4 lg:p-8 space-y-4 flex flex-col justify-center items-center">
+          <div data-aos="fade-up" className="bg-cream-sage/10 border backdrop-blur-xs rounded-lg border-cream-sage/20 p-4 lg:p-8 space-y-4 flex flex-col justify-center items-center">
             <h1 className="text-xl md:text-2xl font-bold font-display text-white">
               Organizer Info
             </h1>
