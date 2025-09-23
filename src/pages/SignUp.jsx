@@ -8,16 +8,19 @@ const SignUp = () => {
     const [error, setError] = useState('');
     const [showPass, setShow] = useState(false);
     const [showPass2, setShow2] = useState(false);
-    const { emailSignUp, googleSignIn } = useContext(AuthContext);
+    const { emailSignUp, googleSignIn} = useContext(AuthContext);
     const navigate = useNavigate();
     const handleSignUp = (e) => {
         e.preventDefault();
         setError('');
         const name = e.target.name.value;
+        const photoURL=e.target.photoURL.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
         const confirmpass = e.target.confirmpass.value;
-        console.log(name, email, password, confirmpass);
+        const user={
+displayName:name, email,photoURL
+        }
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/
         if (password !== confirmpass) {
             setError("Password don't match");
@@ -29,16 +32,27 @@ const SignUp = () => {
             return;
         }
         emailSignUp(email, password)
-            .then((result) => {
-                Swal.fire({
+            .then(() => {
+                fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+                if(data.insertedId){
+                    Swal.fire({
                     icon: "success",
-                    title: `Welcome, ${result.user.displayName || result.user.email}`,
+                    title: `Welcome, ${user.displayName || user.email}`,
                     text: "Your account has been created and you are now logged in.",
                     showConfirmButton: false,
                     timer: 2000
                 }).then(() => navigate('/'));
+                }
 
-            })
+            })})
             .catch((err) => {
                 setError(err.message);
             })
@@ -46,16 +60,30 @@ const SignUp = () => {
     const handleGoogleSignUp = () => {
         googleSignIn()
             .then((result) => {
+                const {displayName,email,photoURL}=result.user;
+                const user={displayName,email,photoURL}
+                fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+               if(data.insertedId){
                 Swal.fire({
                     icon: "success",
-                    title: `Welcome, ${result.user.displayName || result.user.email}`,
+                    title: `Welcome, ${user.displayName || user.email}`,
                     showConfirmButton: false,
                     timer: 1500
                 })
                     .then(() => {
                         navigate('/');
                     })
-            })
+            }
+        })
+    })
             .catch((err) => { 
                 Swal.fire({
     icon: "error",
@@ -73,7 +101,7 @@ const SignUp = () => {
                 <label className="label text-charcoal-green font-semibold">Email</label>
                 <input type="email" name='email' className="input border-charcoal-green text-charcoal-green focus:border-eucalyptus" placeholder="Email" required />
                 <label className="label text-charcoal-green font-semibold">PhotoURL</label>
-                <input type="text" name='photoUrl' className="input border-charcoal-green text-charcoal-green focus:border-eucalyptus" placeholder="PhotURL" required />
+                <input type="text" name='photoURL' className="input border-charcoal-green text-charcoal-green focus:border-eucalyptus" placeholder="PhotURL" required />
                 <label className="label text-charcoal-green font-semibold">Password</label>
                 <div className="relative">
                     <input

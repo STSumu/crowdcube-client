@@ -11,6 +11,7 @@ import { RiGraduationCapLine } from "react-icons/ri";
 import { FaFirstAid, FaHandsHelping, FaLeaf, FaMicrochip, FaPalette,FaPaw } from "react-icons/fa";
 import Loading from './../pages/Loading';
 import { Fade } from "react-awesome-reveal";
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
   const [selectedIdx, setSelectedIdx] =useState(0);
@@ -68,9 +69,9 @@ useEffect(()=>{
                     {cat.headline}
                   </h1>
                   <p className="mb-5 text-mint-matte text-lg italic">{cat.subtitle}</p>
-                  <button className="btn btn-lg bg-forest-matte text-cream-sage shadow-lg rounded-4xl border-none shadow-[#0b1515]">
+                  <Link to='/addCampaign' className="btn btn-lg bg-forest-matte text-cream-sage shadow-lg rounded-4xl border-none shadow-[#0b1515]">
                     Get Started
-                  </button>
+                  </Link>
 </Fade>
                 </div>
               </div>

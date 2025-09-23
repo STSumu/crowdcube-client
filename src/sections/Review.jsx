@@ -40,7 +40,7 @@ const Review = () => {
     <div>
         {
             reviews.map((review,idx)=>
-                <div className={`chat ${idx %2 ===0 ? 'chat-start' : 'chat-end'}`} data-aos={`${idx %2 ===0 ? "slide-right" : 'slide-left'}` }>
+                <div key={idx} className={`chat ${idx %2 ===0 ? 'chat-start' : 'chat-end'}`} data-aos={`${idx %2 ===0 ? "fade-right" : 'fade-left'}` }>
   <div className="chat-image avatar">
     <div className="w-30 border border-charcoal-green rounded-full">
       <img className="rounded-full"

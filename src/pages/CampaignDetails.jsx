@@ -30,7 +30,6 @@ const CampaignDetails = () => {
     type,
     minDonation,
   } = campaign;
-  console.log(campaign);
   const {user}=useContext(AuthContext);
   const [newRaised,setRaised]=useState(raised);
   const [error,setError]=useState("");

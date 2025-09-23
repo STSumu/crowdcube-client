@@ -112,11 +112,10 @@ const HowItWorks = () => {
         className="flex flex-col justify-center items-center gap-2 mb-5"
       >
         <h2 className="text-forest-matte font-bold text-2xl md:text-4xl">
-          Running Campaigns
+          Getting Started is Easy
         </h2>
         <p className="text-eucalyptus text-sm md:text-lg">
-          Engage with our currently running Campaigns
-        </p>
+Create campaigns, donate to causes, and track your impact — all in one place.        </p>
       </Fade>
       <div className="min-h-screen bg-transparent flex flex-col lg:flex-row items-center gap-20 lg:justify-between ">
         {/* steps*/}

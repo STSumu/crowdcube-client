@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 
 const Main = () => {
     return (
-        <div className='bg-cream-sage'>
+        <div className='bg-cream-sage overflow-x-hidden'>
         <Navbar></Navbar>
         <main className='min-h-screen'>
             <Outlet></Outlet>
