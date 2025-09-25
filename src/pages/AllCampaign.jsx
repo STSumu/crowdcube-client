@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import Loading from "./Loading";
 import { Link } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
+import { FaArrowUp } from 'react-icons/fa';
 
 const AllCampaign = () => {
   const [campaigns, setCampaings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sort,setSort]=useState(false);
   useEffect(() => {
     fetch("http://localhost:5000/campaigns")
       .then((res) => res.json())
@@ -14,6 +17,28 @@ const AllCampaign = () => {
         setLoading(false);
       });
   }, []);
+  const handleSort = () => {
+  setSort((prev) => {
+    const newSort = !prev;
+    if (newSort) {
+      fetch("http://localhost:5000/sortedCampaigns")
+        .then((res) => res.json())
+        .then((data) => {
+          setCampaings(data);
+          setLoading(false);
+        });
+    } else {
+      fetch("http://localhost:5000/campaigns")
+        .then((res) => res.json())
+        .then((data) => {
+          setCampaings(data);
+          setLoading(false);
+        });
+    }
+    return newSort;
+  });
+};
+
   if (loading) return <Loading></Loading>;
   return (
     <div
@@ -40,6 +65,12 @@ const AllCampaign = () => {
         <p className="text-forest-matte text-lg">
           Discover and support meaningful campaigns from our community
         </p>
+      </div>
+                            <Tooltip id="my-tooltip" className="z-50"style={{ backgroundColor: "#2C3E2D", color: "#F4F6F0", font:'bold' }}/>
+
+      <div className="text-right my-4">
+        <button className={`btn ${sort ? 'bg-charcoal-green' : 'bg-eucalyptus'} text-cream-sage shadow-sm border-0`} data-tooltip-id="my-tooltip"
+                  data-tooltip-content={`${!sort ? "Sort by Ascending order of Minimum Donation": ''}`} onClick={() => handleSort()}>Sort <FaArrowUp></FaArrowUp></button>
       </div>
       <div className="overflow-x-auto bg-mint-matte/15 border border-charcoal-green/20 rounded-lg">
         <table className="table w-full">

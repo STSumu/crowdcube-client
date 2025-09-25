@@ -22,6 +22,7 @@ import UpdateCampaign from './pages/UpdateCampaign';
 import MyDonations from './pages/MyDonations';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import ThemeProvider from './provider/ThemeProvider';
 AOS.init();
 
 const router=createBrowserRouter([
@@ -78,9 +79,11 @@ const router=createBrowserRouter([
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
       <RouterProvider router={router}>
     </RouterProvider>
     </AuthProvider>
+    </ThemeProvider>
   </StrictMode>,
 )

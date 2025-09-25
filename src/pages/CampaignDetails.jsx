@@ -37,6 +37,21 @@ const CampaignDetails = () => {
   const donationRef=useRef();
   
   const percentage = (newRaised * 100) / goal;
+  const handleDonateButtonClick=()=>{
+    const currentDate=new Date();
+    const campaignDeadline = new Date(deadline);
+    if(campaignDeadline < currentDate){
+      Swal.fire({
+  icon: "error", 
+  title: "Campaign Ended",
+  text: "Sorry, this campaign's deadline is over. Donations are no longer accepted.",
+  confirmButtonColor: "#7FB069",
+  confirmButtonText: "OK"
+});
+return;
+    }
+    document.getElementById("my_modal_5").showModal()
+  }
   const handleDonate = () => {
     setError('');
      const donationAmount=donationRef.current.value;
@@ -242,8 +257,7 @@ confirmButtonColor: "#7FB069",
 
               <div className="flex items-center gap-4">
                 <button
-                  onClick={() =>
-                    document.getElementById("my_modal_5").showModal()
+                  onClick={handleDonateButtonClick
                   }
                   className="btn btn-lg bg-cream-sage text-charcoal-green hover:bg-cream-sage/90 px-8 shadow-lg border-none font-bold"
                 >
