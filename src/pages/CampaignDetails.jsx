@@ -81,7 +81,7 @@ return;
     if (result.isConfirmed) {
       // if donation confirmed
       
-      fetch(`http://localhost:5000/donation`, {
+      fetch(`https://crowdcube-server-plum-delta.vercel.app/donation`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

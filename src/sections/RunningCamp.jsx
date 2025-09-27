@@ -13,7 +13,7 @@ const RunningCamp = () => {
     const [campaigns,setCampaigns]=useState([]);
     const [loading,setLoading]=useState(true);
     useEffect(()=>{
-          fetch('http://localhost:5000/runningCampaigns')
+          fetch('https://crowdcube-server-plum-delta.vercel.app/runningCampaigns')
           .then(res=>res.json())
           .then(data=>{
             setCampaigns(data)},

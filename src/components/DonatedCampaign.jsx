@@ -6,7 +6,7 @@ const DonatedCampaign = ({ donatedCampaign,flex }) => {
   const [campaign, setCampaign] = useState({});
   const { donationTime, amount } = donatedCampaign;
   useEffect(() => {
-    fetch(`http://localhost:5000/campaigns/${donatedCampaign.campaignId}`)
+    fetch(`https://crowdcube-server-plum-delta.vercel.app/campaigns/${donatedCampaign.campaignId}`)
       .then((res) => res.json())
       .then((data) => setCampaign(data));
   }, []);

@@ -13,7 +13,7 @@ const AddCampaign = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:5000/types")
+    fetch("https://crowdcube-server-plum-delta.vercel.app/types")
       .then((res) => res.json())
       .then((data) => setTypes(data));
   });
@@ -42,7 +42,7 @@ const AddCampaign = () => {
       raised: Number(0),
     };
 
-    fetch("http://localhost:5000/campaign", {
+    fetch("https://crowdcube-server-plum-delta.vercel.app/campaign", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

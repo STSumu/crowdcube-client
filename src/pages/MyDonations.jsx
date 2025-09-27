@@ -7,7 +7,7 @@ const MyDonations = () => {
     const [campaigns,setCampaigns]=useState([]);
     const {user}=useContext(AuthContext);
      useEffect(()=>{
-        fetch(`http://localhost:5000/donation/${user.email}`)
+        fetch(`https://crowdcube-server-plum-delta.vercel.app/donation/${user.email}`)
         .then(res=>res.json())
         .then(data=>setCampaigns(data))
     },[])

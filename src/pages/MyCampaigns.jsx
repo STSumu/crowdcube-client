@@ -13,7 +13,7 @@ const MyCampaigns = () => {
   const [loading, setLoading] = useState(true);
   const navigate=useNavigate();
   useEffect(() => {
-    fetch(`http://localhost:5000/myCampaign/${user?.email}`)
+    fetch(`https://crowdcube-server-plum-delta.vercel.app/myCampaign/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setCampaings(data);
@@ -37,7 +37,7 @@ const MyCampaigns = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/campaign/${id}`, {
+        fetch(`https://crowdcube-server-plum-delta.vercel.app/campaign/${id}`, {
       method: "DELETE",
     })
     .then((result)=>{

@@ -33,7 +33,7 @@ displayName:name, email,photoURL
         }
         emailSignUp(email, password)
             .then(() => {
-                fetch("http://localhost:5000/users", {
+                fetch("https://crowdcube-server-plum-delta.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -62,7 +62,7 @@ displayName:name, email,photoURL
             .then((result) => {
                 const {displayName,email,photoURL}=result.user;
                 const user={displayName,email,photoURL}
-                fetch("http://localhost:5000/users", {
+                fetch("https://crowdcube-server-plum-delta.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

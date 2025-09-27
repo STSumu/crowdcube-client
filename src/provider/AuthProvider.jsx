@@ -42,7 +42,7 @@ const AuthProvider = ({children}) => {
     useEffect(()=>{
          const unsubscribe=onAuthStateChanged(auth,currentUser=>{
           if (currentUser) {
-      fetch(`http://localhost:5000/users/${currentUser.email}`)
+      fetch(`https://crowdcube-server-plum-delta.vercel.app/users/${currentUser.email}`)
         .then(res => res.json())
         .then(data => {setUser(data);
                     setLoading(false);

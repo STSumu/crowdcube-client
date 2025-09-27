@@ -54,12 +54,12 @@ const router=createBrowserRouter([
       {
         path:'/updateCampaign/:id',
         element:<PrivateRouter><UpdateCampaign></UpdateCampaign></PrivateRouter>,
-        loader:({params})=>fetch(`http://localhost:5000/campaigns/${params.id}`)
+        loader:({params})=>fetch(`https://crowdcube-server-plum-delta.vercel.app/${params.id}`)
       },
       {
         path:'/campaign/:campId',
         element:<PrivateRouter><CampaignDetails></CampaignDetails></PrivateRouter>,
-        loader:({params})=>fetch(`http://localhost:5000/campaigns/${params.campId}`)
+        loader:({params})=>fetch(`https://crowdcube-server-plum-delta.vercel.app/campaigns/${params.campId}`)
       }
     ]
   },{

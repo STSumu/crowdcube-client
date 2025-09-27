@@ -29,7 +29,7 @@ const Banner = () => {
 };
   const swiperRef = useRef(null);
 useEffect(()=>{
-  fetch('http://localhost:5000/categories')
+  fetch('https://crowdcube-server-plum-delta.vercel.app/categories')
   .then((res)=>res.json())
   .then((data)=>{setCategories(data),
     setLoading(false);

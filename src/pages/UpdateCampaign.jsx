@@ -10,7 +10,7 @@ const UpdateCampaign = () => {
   const loadedData = useLoaderData();
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:5000/types")
+    fetch("https://crowdcube-server-plum-delta.vercel.app/types")
       .then((res) => res.json())
       .then((data) => setTypes(data));
   }, []);
@@ -62,7 +62,7 @@ const UpdateCampaign = () => {
       confirmButtonText: "Yes",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/updateCampaign/${loadedData._id}`, {
+        fetch(`https://crowdcube-server-plum-delta.vercel.app/updateCampaign/${loadedData._id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

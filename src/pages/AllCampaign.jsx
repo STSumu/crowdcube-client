@@ -10,7 +10,7 @@ const AllCampaign = () => {
   const [loading, setLoading] = useState(true);
   const [sort,setSort]=useState(false);
   useEffect(() => {
-    fetch("http://localhost:5000/campaigns")
+    fetch("https://crowdcube-server-plum-delta.vercel.app/campaigns")
       .then((res) => res.json())
       .then((data) => {
         setCampaings(data);
@@ -21,14 +21,14 @@ const AllCampaign = () => {
   setSort((prev) => {
     const newSort = !prev;
     if (newSort) {
-      fetch("http://localhost:5000/sortedCampaigns")
+      fetch("https://crowdcube-server-plum-delta.vercel.app/sortedCampaigns")
         .then((res) => res.json())
         .then((data) => {
           setCampaings(data);
           setLoading(false);
         });
     } else {
-      fetch("http://localhost:5000/campaigns")
+      fetch("https://crowdcube-server-plum-delta.vercel.app/campaigns")
         .then((res) => res.json())
         .then((data) => {
           setCampaings(data);
