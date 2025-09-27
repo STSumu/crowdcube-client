@@ -86,7 +86,7 @@ const AddCampaign = () => {
     <div
       className="bg-mint-matte/30 join min-h-screen px-4 md:px-10 lg:px-20 flex flex-col pt-30 pb-20 justify-between items-center"
       style={{
-        backgroundImage: `url('/bg1.svg')`,
+        backgroundImage: `url('/formBg.svg')`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",

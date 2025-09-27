@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Threads from "../assets/Threads";
+import {  useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";

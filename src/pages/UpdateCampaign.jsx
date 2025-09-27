@@ -111,7 +111,7 @@ const UpdateCampaign = () => {
     <div
       className="px-2 md:px-8 lg:px-25 pb-10 pt-25 flex justify-center items-center"
       style={{
-        backgroundImage: `url('/bg1.svg')`,
+        backgroundImage: `url('/formBg.svg')`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",

@@ -2,24 +2,32 @@ import React, { createContext, useState } from 'react';
 
 export const ThemeContext=createContext();
 const ThemeProvider = ({children}) => {
-    const [dark,setDark]=useState(false);
-  const mintMatte=dark ? "#1A2B1C" : "#B8D8BA";
-  const eucalyptus=dark ? "#4A6B3A" : "#7FB069";
-  const forestMatte=dark ? "#E8F0F0" : "#2F4F4F";
-  const charcoalGreen=dark ? "#D3E5D4" : "#2C3E2D";
-  const creamSage=dark ? "#0B0F0A" : "#F4F6F0";
-  const danger=dark ? "#E67A6F" : "#C85A54";     
-  const warning=dark ? "#E6C48A" : "#D4A574";
+    const [dark,setDark]=useState(true);
+  const lightTheme = {
+  mintMatte: "#B8D8BA",
+  eucalyptus: "#7FB069",
+  forestMatte: "#2F4F4F",
+  charcoalGreen: "#2C3E2D",
+  creamSage: "#F4F6F0",
+  danger: "#C85A54",
+  warning: "#D4A574",
+};
+
+const darkTheme = {
+  mintMatte: "#1A2B1C",
+  eucalyptus: "#4A6B3A",
+  forestMatte: "#E8F0F0",
+  charcoalGreen: "#D3E5D4",
+  creamSage: "0B0F0A#",
+  danger: "#E67A6F",
+  warning: "#E6C48A",
+};
+const theme=dark ? darkTheme : lightTheme;
+
     const themeInfo={
         dark,
         setDark,
-        mintMatte,
-eucalyptus,
-forestMatte,
-charcoalGreen,
-creamSage,
-danger,
-warning,
+        theme,
     }
     return (
         <ThemeContext.Provider value={themeInfo}>

@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { FaUser } from "react-icons/fa";
+import { FaMoon, FaSun, FaUser } from "react-icons/fa";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
+import { ThemeContext } from "../provider/ThemeProvider";
 
 const Navbar = () => {
   const links = (
@@ -27,6 +28,7 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const [bg, setbg] = useState("");
   const location = useLocation();
+  const {theme,dark,setDark}=useContext(ThemeContext);
   useEffect(() => {
     const handleScroll = () => {
       const scrollStatus = window.scrollY > 300;
@@ -111,6 +113,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 font-semibold">{links}</ul>
       </div>
       <div className="navbar-end">
+        <button className={`btn ${bg} shadow-sm border-0 text-yellow-500 text-xl`} onClick={()=>setDark(!dark)}>{dark ? <FaSun></FaSun> : <FaMoon></FaMoon>}</button>
         {user ? (
           <div className="dropdown dropdown-end">
             <div

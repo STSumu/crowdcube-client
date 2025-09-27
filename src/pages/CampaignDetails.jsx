@@ -142,7 +142,7 @@ confirmButtonColor: "#7FB069",
           backgroundPosition: "center",
         }
       : {
-        backgroundImage: `url(/bg4.png)`,
+        backgroundImage: `url(/defaultBg.png)`,
           backgroundAttachment: "fixed",
           backgroundSize: "cover",
           backgroundPosition: "center",

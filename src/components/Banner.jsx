@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Pagination } from "swiper/modules";
 import Marquee from "react-fast-marquee";
@@ -12,10 +12,8 @@ import { FaFirstAid, FaHandsHelping, FaLeaf, FaMicrochip, FaPalette,FaPaw } from
 import Loading from './../pages/Loading';
 import { Fade } from "react-awesome-reveal";
 import { Link } from 'react-router-dom';
-import { ThemeContext } from '../provider/ThemeProvider';
 
 const Banner = () => {
-  const {dark,mintMatte,eucalyptus,forestMatte,charcoalGreen,creamSage,danger,warning}=useContext(ThemeContext);
   const [selectedIdx, setSelectedIdx] =useState(0);
   const [categories,setCategories]=useState([]);
   const [loading,setLoading]=useState(true);

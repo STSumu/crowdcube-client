@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Lottie from "lottie-react";
-import loginAnimation from "../assets/Login.json";
+import loginAnimation from "../assets/LoginPageAnimation.json";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 

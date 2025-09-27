@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const DonatedCampaign = ({ donatedCampaign,flex }) => {
   const [campaign, setCampaign] = useState({});
@@ -28,7 +28,7 @@ const DonatedCampaign = ({ donatedCampaign,flex }) => {
     }`} data-aos={`${flex ? "fade-right" : "fade-left"}`}>
       <figure className="md:w-2/5 h-full p-2">
     <img
-      src={image || '/bg4.png'}
+      src={image || '/defaultBg.png'}
       alt="Campaign"
       className="w-full h-full object-cover rounded-lg"
     />
